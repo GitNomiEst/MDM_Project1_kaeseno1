@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  flask-playground:
+    build: .
+    image: mosazhaw/flask-playground
+    ports:
+       - "5000:5000"
+networks:
+  flask-playground-network:
