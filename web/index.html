@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,19 +21,17 @@
 
 <body>
     <div class="container-fluid">
-        <h1>Python Project 1</h1>
+        <h1 class="title">MDM - Python Project 1</h1>
     </div>
-    <div class="container-fluid">
-        <form>
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Number</label>
-                <input type="text" onkeyup="inputChanged(event);" class="form-control" id="numberInput"
-                    placeholder="Your number">
-                <label for="result">Result</label>
-                <input type="text" class="form-control" id="result"
-                    placeholder="Result" disabled>
-            </div>
-        </form>
+    <div class="container-fluid weather-container">
+        {% if weather_data %}
+            <h2 class="weather-title">Wetter Information von Elysium Plantia auf dem Planet Mars</h2>
+            <p>Es gibt auf dem Mars ein Gebiet namens Elysium Planitia. Die Elysium Planitia ist eine ausgedehnte, flache Ebene auf dem Mars, die sich im Bereich der Elysium Mons, einem großen Vulkan auf dem Mars, befindet. Diese Region wurde von verschiedenen Mars-Missionen, einschließlich der Viking-Orbiter und des Mars Rovers, untersucht.</p>
+            <p>Temperature: {{ weather_data.temperature}}</p>
+            <p>Humidity: {{ weather_data.humidity }}</p>
+        {% else %}
+            <p class="error-message">Error loading weather data.</p>
+        {% endif %}
     </div>
 </body>
 

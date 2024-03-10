@@ -1,15 +1,29 @@
 body {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     height: 100vh;
     margin: 0;
 }
 
-.container {
+.container-fluid {
     text-align: center;
 }
 
-h1 {
-    color: blue;
+.title {
+    color: black;
+    font-size: 12pt;
+    font-family: Calibri, sans-serif;
+}
+
+.weather-container {
+    margin-top: 2cm;
+    text-align: left;
+}
+
+.weather-title {
+    color: orange;
+}
+
+.error-message {
+    color: red; 
 }
