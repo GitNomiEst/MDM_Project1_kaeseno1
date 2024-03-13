@@ -45,18 +45,10 @@
         <h1 class="title">MDM - Python Project 1 - kaeseno1</h1>
     </div>
     <div class="container-fluid weather-container">
-        {% if weather_data %}
         <h2 class="main-title">Mars Wetter</h2>
         <h2 class="weather-title">Wetter Information von Elysium Plantia</h2>
-        <p>Es gibt auf dem Mars ein Gebiet namens Elysium Planitia. Die Elysium Planitia ist eine ausgedehnte, flache
-            Ebene auf dem Mars, die sich im Bereich der Elysium Mons, einem großen Vulkan auf dem Mars, befindet. Diese
-            Region wurde von verschiedenen Mars-Missionen, einschließlich der Viking-Orbiter und des Mars Rovers,
-            untersucht.</p>
-        <p>Temperature: {{ weather_data.temperature}}</p>
-        <p>Humidity: {{ weather_data.humidity }}</p>
-        {% else %}
-        <p class="error-message">Error loading weather data.</p>
-        {% endif %}
+        <p>Auf dieser Seite sind die atkuellen Wetterdaten vom Mars aus der Region Elysium Plantia gelistet.</p>
+
     </div>
 </body>
 

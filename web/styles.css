@@ -11,9 +11,10 @@ body {
 }
 
 .title {
-    color: black;
-    font-size: 12pt;
+    color: white;
+    font-size: 14pt;
     font-family: Calibri, sans-serif;
+    font-weight: bold;
 }
 
 .weather-container {
@@ -22,12 +23,15 @@ body {
 }
 
 .weather-title {
-    color: black;
+    color: white;
+    font-weight: bold;
+
 }
 
 .main-title {
     font-size: 20pt;
-    color: black;
+    color: white;
+    font-weight: bold;
 }
 
 .error-message {
@@ -38,4 +42,6 @@ body {
     background-image: url('pic/background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    color: white;
+    font-weight: bold;
 }
