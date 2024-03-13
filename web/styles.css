@@ -31,11 +31,11 @@ body {
 }
 
 .error-message {
-    color: red; 
+    color: red;
 }
 
 body {
-    background-image: url('background.jpg');
-    background-size: cover; /* Adjust as needed */
+    background-image: url('pic/background.jpg');
+    background-size: cover;
     background-repeat: no-repeat;
 }
