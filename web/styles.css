@@ -3,6 +3,7 @@ body {
     flex-direction: column;
     height: 100vh;
     margin: 0;
+    color: black;
 }
 
 .container-fluid {
@@ -21,9 +22,20 @@ body {
 }
 
 .weather-title {
-    color: orange;
+    color: black;
+}
+
+.main-title {
+    font-size: 20pt;
+    color: black;
 }
 
 .error-message {
     color: red; 
+}
+
+body {
+    background-image: url('background.jpg');
+    background-size: cover; /* Adjust as needed */
+    background-repeat: no-repeat;
 }

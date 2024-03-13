@@ -16,16 +16,35 @@
     <!-- Javascript -->
     <script src="script.js"></script>
 
-    <title>Python Playground</title>
+    <title>Mars Weather</title>
 </head>
 
 <body>
+     <!-- Navigation Links -->
+     <div class="container-fluid">
+        <div class="row">
+            <div class="col-auto">
+                <!-- Navigation Links -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="model.html">Model</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
     <div class="container-fluid">
-        <h1 class="title">MDM - Python Project 1</h1>
+        <h1 class="title">MDM - Python Project 1 - kaeseno1</h1>
     </div>
     <div class="container-fluid weather-container">
         {% if weather_data %}
-            <h2 class="weather-title">Wetter Information von Elysium Plantia auf dem Planet Mars</h2>
+            <h2 class="main-title">Mars Wetter</h2>
+            <h2 class="weather-title">Wetter Information von Elysium Plantia</h2>
             <p>Es gibt auf dem Mars ein Gebiet namens Elysium Planitia. Die Elysium Planitia ist eine ausgedehnte, flache Ebene auf dem Mars, die sich im Bereich der Elysium Mons, einem großen Vulkan auf dem Mars, befindet. Diese Region wurde von verschiedenen Mars-Missionen, einschließlich der Viking-Orbiter und des Mars Rovers, untersucht.</p>
             <p>Temperature: {{ weather_data.temperature}}</p>
             <p>Humidity: {{ weather_data.humidity }}</p>
@@ -34,5 +53,7 @@
         {% endif %}
     </div>
 </body>
+
+
 
 </html>
