@@ -1,18 +1,20 @@
 import requests
 
-def get_insight_weather(api_key):
-    base_url = "https://api.nasa.gov/insight_weather/"
+def get_neo_data(api_key, start_date, end_date):
+    base_url = "https://api.nasa.gov/neo/rest/v1/feed"
     params = {
-        "api_key": api_key,
-        "feedtype": "json",
-        "ver": "1.0"
+        "start_date": start_date,
+        "end_date": end_date,
+        "api_key": api_key
     }
 
     response = requests.get(base_url, params=params)
 
     if response.status_code == 200:
-        weather_data = response.json()
-        return weather_data
+        neo_data = response.json()
+        print("NEO data:")
+        print(neo_data)
+        return neo_data
     else:
         print(f"Error: {response.status_code}")
         return None
@@ -20,37 +22,6 @@ def get_insight_weather(api_key):
 if __name__ == "__main__":
     # API-Schlüssel
     api_key = "0m4vbWgrfhHHwXv7FS1U51c3TNxlFqZNcNCUuWs2"
-    weather_data = get_insight_weather(api_key)
-
-    if weather_data:
-        print("Weather data:")
-        print(weather_data)
-
-
-def get_insight_weather(api_key):
-    base_url = "https://api.nasa.gov/insight_weather/"
-    params = {
-        "api_key": api_key,
-        "feedtype": "json",
-        "ver": "1.0"
-    }
-
-    response = requests.get(base_url, params=params)
-    print(response)
-
-    # Extrahiere Temperaturdaten
-    temperature_data = response.get('validity_checks', {}).get('1219', {}).get('AT', {})
-
-    # Überprüfe, ob Temperaturdaten vorhanden und gültig sind
-    if temperature_data.get('valid', False):
-        sol_hours_with_data = temperature_data.get('sol_hours_with_data', [])
-        print(f'Temperature data available for sol hours: {sol_hours_with_data}')
-    else:
-        print('No valid temperature data available.')
-
-    if response.status_code == 200:
-        weather_data = response.json()
-        return weather_data
-    else:
-        print(f"Error: {response.status_code}")
-        return None
+    start_date = "2024-03-16"  # Beispielstartdatum
+    end_date = "2024-03-23"  # Beispielenddatum
+    neo_data = get_neo_data(api_key, start_date, end_date)
