@@ -1,23 +1,30 @@
 import requests
 
 def get_neo_data(api_key, start_date, end_date):
+    all_data = []
+
     base_url = "https://api.nasa.gov/neo/rest/v1/feed"
-    params = {
-        "start_date": start_date,
-        "end_date": end_date,
-        "api_key": api_key
-    }
+    next_url = base_url
 
-    response = requests.get(base_url, params=params)
+    while next_url:
+        response = requests.get(next_url, params={"start_date": start_date, "end_date": end_date, "api_key": api_key})
+        
+        if response.status_code == 200:
+            neo_data = response.json()
+            all_data.append(neo_data)
+            print(neo_data)
+            
+            # Get the link for the next page, if it exists
+            next_url = neo_data.get("links", {}).get("next")
+        else:
+            print(f"Error: {response.status_code}")
+            return None
 
-    if response.status_code == 200:
-        neo_data = response.json()
-        print("NEO data:")
-        print(neo_data)
-        return neo_data
-    else:
-        print(f"Error: {response.status_code}")
-        return None
+    print("All NEO data loaded.")
+    return all_data
+
+
+
 
 if __name__ == "__main__":
     # API-Schlüssel
