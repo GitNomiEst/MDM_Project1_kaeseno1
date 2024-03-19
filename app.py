@@ -7,7 +7,7 @@ app = Flask(__name__, static_url_path='/', static_folder='web', template_folder=
 from flask import Flask, render_template
 from api import get_neo_data
 
-app = Flask(__name__, static_url_path='/', static_folder='web', template_folder='web')
+app = Flask(__name__, static_url_path='/', static_folder='src', template_folder='src')
 
 
 @app.get('/')

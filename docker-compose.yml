@@ -1,10 +1,10 @@
 version: '3.8'
 
 services:
-  flask-playground:
+  pprojectone :
     build: .
-    image: mosazhaw/flask-playground
+    image: doknomi/pprojectone 
     ports:
        - "5000:5000"
 networks:
-  flask-playground-network:
+  pprojectone-network:

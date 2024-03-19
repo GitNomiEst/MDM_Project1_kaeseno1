@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- My stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Javascript -->
+    <script src="script.js"></script>
+
+    <title>Asteorids Home</title>
+</head>
+
+<body>
+    <!-- Navigation Links -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-auto">
+                <!-- Navigation Links -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <ul class="navbar-nav">
+                        <li>
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="model.html">Model</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <h1 class="title">MDM - Python Project 1 - kaeseno1</h1>
+    </div>
+    <div class="container-fluid weather-container">
+        <h2 class="main-title">Home</h2>
+        <h2 class="weather-title">Dangerous Asteorids</h2>
+
+        <p>Auf dieser Seite sind die Asteoriden gelistet.</p>
+
+        <!-- NEO Data Display -->
+        {% if neo_data %}
+        {% for date, asteroids in neo_data['near_earth_objects'].items() %}
+        <h2>{{ date }}</h2>
+        {% for asteroid in asteroids %}
+        <div>
+            <h3>{{ asteroid.name }}</h3>
+            <p>ID: {{ asteroid.id }}</p>
+            <!-- Add more details here as needed -->
+        </div>
+        {% endfor %}
+        {% endfor %}
+        {% else %}
+        <p>No NEO data available</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
