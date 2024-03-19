@@ -53,216 +53,32 @@
         <p>Please enter your parameters for your special Asteorid:</p>
 
         <!-- Input fields for model features -->
-<form id="asteroid-form">
-    <div class="form-group">
-        <label for="absolute-magnitude">Absolute Magnitude:</label>
-        <input type="text" class="form-control col-md-3" id="absolute-magnitude" name="absolute-magnitude">
-    </div>
-    <div class="form-group">
-        <label for="min-diameter">Minimum Diameter (km):</label>
-        <input type="text" class="form-control col-md-3" id="min-diameter" name="min-diameter">
-    </div>
-    <div class="form-group">
-        <label for="max-diameter">Maximum Diameter (km):</label>
-        <input type="text" class="form-control col-md-3" id="max-diameter" name="max-diameter">
-    </div>
-    <div class="form-group">
-        <label for="miss-distance">Miss Distance (km):</label>
-        <input type="text" class="form-control col-md-3" id="miss-distance" name="miss-distance">
-    </div>
-    <div class="form-group">
-        <label for="relative-velocity">Relative Velocity (km/h):</label>
-        <input type="text" class="form-control col-md-3" id="relative-velocity" name="relative-velocity">
-    </div>
-    <button type="submit" class="btn btn-primary">Predict Danger</button>
-</form>
+        <form id="asteroid-form">
+            <div class="form-group">
+                <label for="absolute-magnitude">Absolute Magnitude:</label>
+                <input type="text" class="form-control col-md-3" id="absolute-magnitude" name="absolute-magnitude">
+            </div>
+            <div class="form-group">
+                <label for="min-diameter">Minimum Diameter (km):</label>
+                <input type="text" class="form-control col-md-3" id="min-diameter" name="min-diameter">
+            </div>
+            <div class="form-group">
+                <label for="max-diameter">Maximum Diameter (km):</label>
+                <input type="text" class="form-control col-md-3" id="max-diameter" name="max-diameter">
+            </div>
+            <div class="form-group">
+                <label for="miss-distance">Miss Distance (km):</label>
+                <input type="text" class="form-control col-md-3" id="miss-distance" name="miss-distance">
+            </div>
+            <div class="form-group">
+                <label for="relative-velocity">Relative Velocity (km/h):</label>
+                <input type="text" class="form-control col-md-3" id="relative-velocity" name="relative-velocity">
+            </div>
+            <button type="submit" class="btn btn-primary">Predict Danger</button>
+        </form>
 
-<div id="prediction-result"></div>
+        <div id="prediction-result"></div>
 
-        <br>
-
-        <p>Below you can find the asteorids that are currently around planet earth.</p>
-
-        <!-- To do: Display NEO Data from my mongo db
-        
-        data format in mongo db: 
-    _id
-65f949d0e0f3443fe2bd1e17
-
-links
-Object
-next
-"http://api.nasa.gov/neo/rest/v1/feed?start_date=2024-03-26&end_date=20…"
-previous
-"http://api.nasa.gov/neo/rest/v1/feed?start_date=2024-03-12&end_date=20…"
-self
-"http://api.nasa.gov/neo/rest/v1/feed?start_date=2024-03-19&end_date=20…"
-element_count
-113
-
-near_earth_objects
-Object
-
-2024-03-25
-Array (12)
-
-0
-Object
-
-links
-Object
-self
-"http://api.nasa.gov/neo/rest/v1/neo/2380476?api_key=0m4vbWgrfhHHwXv7FS…"
-id
-"2380476"
-neo_reference_id
-"2380476"
-name
-"380476 (2003 YO1)"
-nasa_jpl_url
-"https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=2380476"
-absolute_magnitude_h
-19.35
-
-estimated_diameter
-Object
-
-kilometers
-Object
-estimated_diameter_min
-0.3585543342
-estimated_diameter_max
-0.8017518649
-
-meters
-Object
-estimated_diameter_min
-358.5543341929
-estimated_diameter_max
-801.7518648824
-
-miles
-Object
-estimated_diameter_min
-0.2227952652
-estimated_diameter_max
-0.498185358
-
-feet
-Object
-estimated_diameter_min
-1176.3594017933
-estimated_diameter_max
-2630.4195883808
-is_potentially_hazardous_asteroid
-false
-
-close_approach_data
-Array (1)
-
-0
-Object
-close_approach_date
-"2024-03-25"
-close_approach_date_full
-"2024-Mar-25 11:23"
-epoch_date_close_approach
-1711365780000
-
-relative_velocity
-Object
-kilometers_per_second
-"12.1132516694"
-kilometers_per_hour
-"43607.7060100034"
-miles_per_hour
-"27096.1326593824"
-
-miss_distance
-Object
-astronomical
-"0.3105770543"
-lunar
-"120.8144741227"
-kilometers
-"46461665.794154341"
-miles
-"28869940.4075622658"
-orbiting_body
-"Earth"
-is_sentry_object
-false
-
-1
-Object
-
-links
-Object
-self
-"http://api.nasa.gov/neo/rest/v1/neo/2471956?api_key=0m4vbWgrfhHHwXv7FS…"
-id
-"2471956"
-neo_reference_id
-"2471956"
-name
-"471956 (2013 SC25)"
-nasa_jpl_url
-"https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=2471956"
-absolute_magnitude_h
-19.28
-
-estimated_diameter
-Object
-
-kilometers
-Object
-estimated_diameter_min
-0.3703010782
-estimated_diameter_max
-0.828018383
-
-meters
-Object
-estimated_diameter_min
-370.3010782229
-estimated_diameter_max
-828.0183830478
-
-miles
-Object
-estimated_diameter_min
-0.2300943513
-estimated_diameter_max
-0.5145066107
-
-feet
-Object
-estimated_diameter_min
-1214.8985894767
-estimated_diameter_max
-2716.5958318385
-is_potentially_hazardous_asteroid
-false
-
-close_approach_data
-Array (1)
-
-0
-Object
-close_approach_date
-"2024-03-25"
-close_approach_date_full
-"2024-Mar-25 19:29"
-epoch_date_close_approach
-1711394940000
-
-relative_velocity
-Object
-kilometers_per_second
-"17.9009513376"-->
-
-
-        
     </div>
 </body>
 
