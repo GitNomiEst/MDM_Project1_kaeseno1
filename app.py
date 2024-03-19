@@ -57,7 +57,7 @@ plt.title('Feature Importance')
 plt.xticks(rotation=45)
 plt.tight_layout()
 
-plt.savefig('frontend/static/feature_importance_plot.png')
+plt.savefig('frontend/static/feature_importance_plot.jpg')
 
 # Initialize Flask app
 app = Flask(__name__, static_url_path='/', static_folder='frontend', template_folder='frontend/build')
