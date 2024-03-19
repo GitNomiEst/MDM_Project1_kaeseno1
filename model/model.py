@@ -64,4 +64,4 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 
 # Save the plot
-plt.savefig('frontend/build/feature_importance_plot.png')
+plt.savefig('frontend/pic/feature_importance_plot.png')
