@@ -1,10 +1,14 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from frontend.api import get_neo_data, save_to_mongodb
-    
-# API-Schlüssel
+from frontend import api
+
+
+# API Key
 api_key = "0m4vbWgrfhHHwXv7FS1U51c3TNxlFqZNcNCUuWs2"
 start_date = "2024-03-16"
 end_date = "2024-03-19"
@@ -15,7 +19,7 @@ print("Data loaded from API")
 
 save_to_mongodb(neo_data)
 
-# Extrahiere relevante Merkmale aus den API-Daten
+# Extract relevant features from the API data
 features = []
 labels = []
 
@@ -32,20 +36,32 @@ for data in neo_data:
             ])
             labels.append(asteroid['is_potentially_hazardous_asteroid'])
 
-# Erstelle einen DataFrame aus den extrahierten Merkmalen und Labels
+# Create a DataFrame from the extracted features and labels
 df = pd.DataFrame(features, columns=['absolute_magnitude_h', 'min_diameter_km', 'max_diameter_km', 'miss_distance_km', 'relative_velocity_km_hour'])
 df['is_potentially_hazardous'] = labels
 
-# Aufteilung der Daten in Trainings- und Testsets
+# Split the data into training and test sets
 X_train, X_test, y_train, y_test = train_test_split(df.drop('is_potentially_hazardous', axis=1), df['is_potentially_hazardous'], test_size=0.2, random_state=42)
 
-# Modelltraining
+# Train the model
 model = RandomForestClassifier()
 model.fit(X_train, y_train)
 
-# Vorhersage auf dem Testset
+# Prediction on the test set
 predictions = model.predict(X_test)
 
-# Evaluierung des Modells
+# Model evaluation
 accuracy = accuracy_score(y_test, predictions)
 print("Accuracy:", accuracy)
+
+# Plot feature importance
+feature_importances = model.feature_importances_
+plt.bar(df.columns[:-1], feature_importances)
+plt.xlabel('Features')
+plt.ylabel('Importance')
+plt.title('Feature Importance')
+plt.xticks(rotation=45)
+plt.tight_layout()
+
+# Save the plot
+plt.savefig('frontend/build/feature_importance_plot.png')
