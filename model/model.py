@@ -1,6 +1,8 @@
+import random
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from flask import Flask, jsonify, request
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
@@ -65,3 +67,20 @@ plt.tight_layout()
 
 # Save the plot
 plt.savefig('frontend/pic/feature_importance_plot.png')
+
+
+app = Flask(__name__)
+
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    data = request.json
+
+    # Perform the calculation based on the form data
+    # For demonstration purposes, let's just return a random prediction
+    prediction = "Potentially Hazardous" if random.random() < 0.5 else "Not Hazardous"
+
+    return jsonify({'result': prediction})
+
+if __name__ == '__main__':
+    app.run(debug=True)
