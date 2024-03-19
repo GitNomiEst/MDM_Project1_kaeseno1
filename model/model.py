@@ -2,8 +2,8 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
-from api import get_neo_data, save_to_mongodb
-
+from frontend.api import get_neo_data, save_to_mongodb
+    
 # API-Schlüssel
 api_key = "0m4vbWgrfhHHwXv7FS1U51c3TNxlFqZNcNCUuWs2"
 start_date = "2024-03-16"

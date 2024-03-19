@@ -48,20 +48,9 @@
         <p>Auf dieser Seite sind die Asteoriden gelistet.</p>
 
         <!-- NEO Data Display -->
-        {% if neo_data %}
-        {% for date, asteroids in neo_data['near_earth_objects'].items() %}
-        <h2>{{ date }}</h2>
-        {% for asteroid in asteroids %}
-        <div>
-            <h3>{{ asteroid.name }}</h3>
-            <p>ID: {{ asteroid.id }}</p>
-            <!-- Add more details here as needed -->
-        </div>
-        {% endfor %}
-        {% endfor %}
-        {% else %}
-        <p>No NEO data available</p>
-        {% endif %}
+
+
+        
     </div>
 </body>
 
