@@ -1,6 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, jsonify, render_template
 from frontend.api import get_neo_data, save_to_mongodb
-from model.model import load_neo_data, preprocess_data, train_model, evaluate_model, save_feature_importance_plot
+from model.model import load_neo_data, preprocess_data, train_model, evaluate_model, save_feature_importance_plot, predict_danger
 
 # Execute code from model.py
 print("Start Data load from API...")
@@ -37,6 +37,23 @@ def main_page():
 @app.route('/model.html')
 def model_page():
     return render_template('model.html')
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    data = request.json
+
+    # Get form data
+    absolute_magnitude = float(data['absolute-magnitude'])
+    min_diameter = float(data['min-diameter'])
+    max_diameter = float(data['max-diameter'])
+    miss_distance = float(data['miss-distance'])
+    relative_velocity = float(data['relative-velocity'])
+
+    # Predict danger level
+    danger_level = predict_danger(absolute_magnitude, min_diameter, max_diameter, miss_distance, relative_velocity)
+
+    # Return prediction result
+    return jsonify({'result': danger_level})
 
 
 if __name__ == "__main__":

@@ -11,7 +11,7 @@ document.getElementById('asteroid-form').addEventListener('submit', function(eve
     });
 
     // Send a POST request to the server with the form data
-    fetch('/predict', {  // Hier war der Fehler
+    fetch('/predict', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -22,7 +22,7 @@ document.getElementById('asteroid-form').addEventListener('submit', function(eve
     .then(data => {
         // Display the prediction result
         const predictionResult = document.getElementById('prediction-result');
-        predictionResult.innerHTML = data.result;
+        predictionResult.innerHTML = `Danger level: ${data.result}`;
     })
     .catch(error => console.error('Error:', error));
 });

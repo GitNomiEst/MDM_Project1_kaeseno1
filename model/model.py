@@ -47,9 +47,6 @@ def train_model(dataframe):
     return model, X_test, y_test
 
 def evaluate_model(model, X_test, y_test):
-    """
-    Evaluate the trained model on the test set and return the accuracy.
-    """
     # Prediction on the test set
     predictions = model.predict(X_test)
 
@@ -58,9 +55,6 @@ def evaluate_model(model, X_test, y_test):
     return accuracy
 
 def save_feature_importance_plot(model, dataframe, plot_filename):
-    """
-    Save a bar plot showing feature importance based on the trained model.
-    """
     # Plot feature importance
     feature_importances = model.feature_importances_
     plt.bar(dataframe.columns[:-1], feature_importances)
@@ -72,6 +66,17 @@ def save_feature_importance_plot(model, dataframe, plot_filename):
 
     # Save the plot
     plt.savefig(plot_filename)
+
+def predict_danger(absolute_magnitude, min_diameter, max_diameter, miss_distance, relative_velocity):
+    # Preprocess input data
+    input_data = pd.DataFrame([[absolute_magnitude, min_diameter, max_diameter, miss_distance, relative_velocity]],
+                              columns=['absolute_magnitude_h', 'min_diameter_km', 'max_diameter_km', 'miss_distance_km', 'relative_velocity_km_hour'])
+
+    # Make prediction using the trained model
+    prediction = model.predict(input_data)
+
+    # Return the predicted danger level
+    return prediction[0]
 
 if __name__ == "__main__":
     api_key = "0m4vbWgrfhHHwXv7FS1U51c3TNxlFqZNcNCUuWs2"
