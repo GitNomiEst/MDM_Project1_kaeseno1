@@ -6,6 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from frontend.api import get_neo_data, save_to_mongodb
 
+model = None
 neo_data = 0; 
 
 def load_neo_data(api_key):
