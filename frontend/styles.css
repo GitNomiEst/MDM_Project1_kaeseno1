@@ -20,7 +20,11 @@ body {
 .weather-container {
     margin-top: 2cm;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Align items vertically */
 }
+
 
 .weather-title {
     color: white;
