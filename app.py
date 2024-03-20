@@ -1,14 +1,8 @@
 from flask import Flask, jsonify, render_template, request
-from frontend.api import get_neo_data, save_to_mongodb
 from model.model import load_neo_data, preprocess_data, train_model, evaluate_model, save_feature_importance_plot, predict_danger
 
 # Execute code from model.py
-api_key = "tWYzV18g3nK6SxabixFWKIJY9d2NHwGUctV8Qjri"
-neo_data = load_neo_data(api_key)
-print("Data loaded from API")
-
-save_to_mongodb(neo_data)
-
+neo_data = load_neo_data()
 df = preprocess_data(neo_data)
 model, X_test, y_test = train_model(df)
 accuracy = evaluate_model(model, X_test, y_test)

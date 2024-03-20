@@ -1,19 +1,29 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from flask import Flask, render_template
+from pymongo import MongoClient
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
-from frontend.api import get_neo_data, save_to_mongodb
 
-model = None
-neo_data = 0; 
+#COMMENTED OUT AS DATA SHALL BE LOADED FROM MONGO DB TO NOT EXCEED THE NASA API LIMIT
+#def load_neo_data(api_key):
+    #print("Start Data load from API...")
+    #neo_data = get_neo_data(api_key)
+    #print("Data loaded from API")
+    #return neo_data
 
-def load_neo_data(api_key):
-    print("Start Data load from API...")
-    neo_data = get_neo_data(api_key)
-    print("Data loaded from API")
+def load_neo_data():
+    # Connect to MongoDB
+    client = MongoClient('localhost', 27017)
+    db = client['nasa']
+    collection = db['nasa']
+
+    # Fetch data from MongoDB
+    neo_data = list(collection.find())
+
     return neo_data
+
 
 def preprocess_data(neo_data):
     features = []
@@ -80,11 +90,7 @@ def predict_danger(absolute_magnitude, min_diameter, max_diameter, miss_distance
     return prediction[0]
 
 if __name__ == "__main__":
-    api_key = "tWYzV18g3nK6SxabixFWKIJY9d2NHwGUctV8Qjri"
-    
-    neo_data = load_neo_data(api_key)
-    save_to_mongodb(neo_data)
-    
+    neo_data = load_neo_data()
     df = preprocess_data(neo_data)
     model, X_test, y_test = train_model(df)
     accuracy = evaluate_model(model, X_test, y_test)
