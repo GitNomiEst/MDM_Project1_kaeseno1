@@ -80,7 +80,7 @@ def predict_danger(absolute_magnitude, min_diameter, max_diameter, miss_distance
     return prediction[0]
 
 if __name__ == "__main__":
-    api_key = "0m4vbWgrfhHHwXv7FS1U51c3TNxlFqZNcNCUuWs2"
+    api_key = "tWYzV18g3nK6SxabixFWKIJY9d2NHwGUctV8Qjri"
     
     neo_data = load_neo_data(api_key)
     save_to_mongodb(neo_data)

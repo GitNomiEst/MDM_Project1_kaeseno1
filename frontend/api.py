@@ -29,16 +29,17 @@ def get_neo_data(api_key):
     return all_data
 
 def save_to_mongodb(data):
-    client = MongoClient('localhost', 27017)
-    db = client['nasa']
-    collection = db['nasa']
-    collection.insert_many(data)
-    print("Data saved to MongoDB.")
+    if data is not None and isinstance(data, list) and data:
+        client = MongoClient('localhost', 27017)
+        db = client['nasa']
+        collection = db['nasa']
+        collection.insert_many(data)
+        print("Data saved to MongoDB.")
+    else:
+        print("No data to save or data format is incorrect.")
+
 
 if __name__ == "__main__":
-    api_key = "0m4vbWgrfhHHwXv7FS1U51c3TNxlFqZNcNCUuWs2"
+    api_key = "tWYzV18g3nK6SxabixFWKIJY9d2NHwGUctV8Qjri"
     neo_data = get_neo_data(api_key)
-    
-    # Test to see if api.py works properly
-    #if neo_data:
-    #    save_to_mongodb(neo_data)
+    save_to_mongodb(neo_data)
