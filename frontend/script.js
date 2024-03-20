@@ -22,7 +22,7 @@ document.getElementById('asteroid-form').addEventListener('submit', function(eve
     .then(data => {
         // Display the prediction result
         const predictionResult = document.getElementById('prediction-result');
-        predictionResult.innerHTML = `Danger level: ${data.result}`;
+        predictionResult.innerHTML = `Prediction Result: ${data.result}`;
     })
     .catch(error => console.error('Error:', error));
 });
