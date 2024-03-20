@@ -85,11 +85,13 @@ def predict_danger(absolute_magnitude, min_diameter, max_diameter, miss_distance
 
     # Make prediction using the trained model
     prediction = model.predict(input_data)
+    print(model)
 
     # Return the predicted danger level
     return prediction[0]
 
 if __name__ == "__main__":
+    model = []
     neo_data = load_neo_data()
     df = preprocess_data(neo_data)
     model, X_test, y_test = train_model(df)
