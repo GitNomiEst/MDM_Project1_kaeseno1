@@ -5,9 +5,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
-    <meta http-equiv="Pragma" content="no-cache"/>
-    <meta http-equiv="Expires" content="0"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -74,42 +74,42 @@
             </div>
             <button type="submit" class="btn btn-primary">Predict Danger</button>
         </form>
-
+        <br>
         <div id="prediction-result"></div>
 
     </div>
 </body>
 
 <script>
-    document.getElementById('asteroid-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
-   
-    alert('Data submitted, thanks!')
-    // Get the form data
-    const formData = new FormData(this);
+    document.getElementById('asteroid-form').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
 
-    // Convert form data to JSON
-    const jsonData = {};
-    formData.forEach((value, key) => {
-        jsonData[key] = value;
+        alert('Data submitted, thanks!')
+        // Get the form data
+        const formData = new FormData(this);
+
+        // Convert form data to JSON
+        const jsonData = {};
+        formData.forEach((value, key) => {
+            jsonData[key] = value;
+        });
+
+        // Send a POST request to the server with the form data
+        fetch('/predict', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(jsonData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Display the prediction result
+                const predictionResult = document.getElementById('prediction-result');
+                predictionResult.innerHTML = `Prediction Result: ${data.danger_level}`;
+            })
+            .catch(error => console.error('Error:', error));
     });
-
-    // Send a POST request to the server with the form data
-    fetch('/predict', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(jsonData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Display the prediction result
-        const predictionResult = document.getElementById('prediction-result');
-        predictionResult.innerHTML = `Prediction Result: ${data.danger_level}`;
-    })
-    .catch(error => console.error('Error:', error));
-});
 </script>
 
 </html>

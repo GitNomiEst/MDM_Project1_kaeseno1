@@ -33,10 +33,12 @@ def predict():
     relative_velocity = float(data['relative-velocity'])
 
     # Predict danger level
-    danger_level = predict_danger(absolute_magnitude, min_diameter, max_diameter, miss_distance, relative_velocity)
+    danger_level = predict_danger(model, absolute_magnitude, min_diameter, max_diameter, miss_distance, relative_velocity)
+
+    danger_level_str = str(danger_level)
 
     # Return prediction result
-    return jsonify({'result': danger_level})
+    return jsonify({'result': danger_level_str})
 
 
 if __name__ == "__main__":

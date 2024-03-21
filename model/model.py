@@ -89,7 +89,7 @@ def save_feature_importance_plot(model, dataframe, plot_filename):
     print("saved figure")
 
 
-def predict_danger(absolute_magnitude, min_diameter, max_diameter, miss_distance, relative_velocity):
+def predict_danger(model, absolute_magnitude, min_diameter, max_diameter, miss_distance, relative_velocity):
     # Preprocess input data
     input_data = pd.DataFrame([[absolute_magnitude, min_diameter, max_diameter, miss_distance, relative_velocity]],
                               columns=['absolute_magnitude_h', 'min_diameter_km', 'max_diameter_km', 'miss_distance_km', 'relative_velocity_km_hour'])
