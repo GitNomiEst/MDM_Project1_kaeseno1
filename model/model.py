@@ -13,6 +13,9 @@ from sklearn.metrics import accuracy_score
     #print("Data loaded from API")
     #return neo_data
 
+model = RandomForestClassifier()
+
+
 def load_neo_data():
     # Connect to MongoDB
     client = MongoClient('localhost', 27017)
@@ -21,6 +24,7 @@ def load_neo_data():
 
     # Fetch data from MongoDB
     neo_data = list(collection.find())
+    print("data from mongo loaded")
 
     return neo_data
 
@@ -45,6 +49,8 @@ def preprocess_data(neo_data):
     # Create a DataFrame from the extracted features and labels
     df = pd.DataFrame(features, columns=['absolute_magnitude_h', 'min_diameter_km', 'max_diameter_km', 'miss_distance_km', 'relative_velocity_km_hour'])
     df['is_potentially_hazardous'] = labels
+    print("data preprocessed")
+
     return df
 
 def train_model(dataframe):
@@ -55,6 +61,7 @@ def train_model(dataframe):
     # Train the model
     model = RandomForestClassifier()
     model.fit(X_train, y_train)
+    print("model trained")
     return model, X_test, y_test
 
 def evaluate_model(model, X_test, y_test):
@@ -63,6 +70,8 @@ def evaluate_model(model, X_test, y_test):
 
     # Model evaluation
     accuracy = accuracy_score(y_test, predictions)
+    print("model evaluated")
+
     return accuracy
 
 def save_feature_importance_plot(model, dataframe, plot_filename):
@@ -77,6 +86,8 @@ def save_feature_importance_plot(model, dataframe, plot_filename):
 
     # Save the plot
     plt.savefig(plot_filename)
+    print("saved figure")
+
 
 def predict_danger(absolute_magnitude, min_diameter, max_diameter, miss_distance, relative_velocity):
     # Preprocess input data
@@ -85,13 +96,11 @@ def predict_danger(absolute_magnitude, min_diameter, max_diameter, miss_distance
 
     # Make prediction using the trained model
     prediction = model.predict(input_data)
-    print(model)
 
     # Return the predicted danger level
     return prediction[0]
 
 if __name__ == "__main__":
-    model = []
     neo_data = load_neo_data()
     df = preprocess_data(neo_data)
     model, X_test, y_test = train_model(df)
