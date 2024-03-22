@@ -1,6 +1,5 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from flask import Flask, render_template
 from pymongo import MongoClient
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
