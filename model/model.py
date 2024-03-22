@@ -54,9 +54,10 @@ def preprocess_data(neo_data):
     return df
 
 def train_model(dataframe):
-    #Train a random forest classifier model using the provided DataFrame.
+    # Train a random forest classifier model using the provided DataFrame.
     # Split the data into training and test sets
-    X_train, X_test, y_train, y_test = train_test_split(dataframe.drop('is_potentially_hazardous', axis=1), dataframe['is_potentially_hazardous'], test_size=0.2, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(dataframe.drop('is_potentially_hazardous', axis=1), 
+                                                        dataframe['is_potentially_hazardous'], test_size=0.2, random_state=42)
 
     # Train the model
     model = RandomForestClassifier()
