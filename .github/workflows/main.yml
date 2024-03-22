@@ -1,4 +1,4 @@
-name: Scrape Data, build and upload Model
+name: Load Data, build and upload Model
 
 on:
   push:
@@ -21,18 +21,11 @@ jobs:
       - name: install python packages
         run: pip install -r requirements.txt
           
-      - name: fetch API data
-        working-directory: *update here
-        run: *update here
-
-      - name: upload data to mongodb
-        working-directory: *update here
-        run: python ./mongo_import.py -c tracks -i ../file.jl -u "${{secrets.MONGODB_URI}}"
+      - name: fetch API data and upload to mongodb
+        run: python api.py
 
       - name: build model
-        working-directory: model
-        run: python ./model.py -u "${{secrets.MONGODB_URI}}"
+        run: python model.py
 
       - name: upload model
-        working-directory: model
         run: python ./save.py -c "${{secrets.AZURE_STORAGE_CONNECTION_STRING}}"
