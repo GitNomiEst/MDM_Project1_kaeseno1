@@ -38,7 +38,12 @@ def predict():
     danger_level_str = str(danger_level)
 
     # Return prediction result
-    return jsonify({'result': danger_level_str})
+    if danger_level:
+        prediction_message = "Your asteroid is dangerous!"
+    else:
+        prediction_message = "Planet Earth is safe."
+
+    return jsonify({'result': prediction_message})
 
 
 if __name__ == "__main__":
