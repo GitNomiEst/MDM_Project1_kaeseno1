@@ -42,7 +42,7 @@ try:
 
     print("made it to the second middle")
     suffix += 1
-    container_name = str("asteroid-model-" + str(suffix))
+    container_name = str("asteroid" + str(suffix))
     print("new container name: ")
     print(container_name)
     
