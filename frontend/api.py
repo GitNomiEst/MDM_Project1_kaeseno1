@@ -4,7 +4,6 @@ from pymongo import MongoClient
 def get_neo_data(api_key):
 
     all_data = []
-
     x = 0
 
     base_url = "https://api.nasa.gov/neo/rest/v1/feed"
@@ -28,9 +27,12 @@ def get_neo_data(api_key):
     print("All NEO data loaded.")
     return all_data
 
+
 def save_to_mongodb(data):
     if data is not None and isinstance(data, list) and data:
-        client = MongoClient('localhost', 27017)
+        # Initialize MongoDB client with appropriate connection string
+        client = MongoClient(f"mongodb+srv://nomi:012no.AhM@nasa.mongocluster.cosmos.azure.com/?tls=true&authMechani sm=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000")
+        
         db = client['nasa']
         collection = db['nasa']
         collection.insert_many(data)

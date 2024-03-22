@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, render_template, request
-from model.model import load_neo_data, preprocess_data, train_model, evaluate_model, save_feature_importance_plot, predict_danger
+from model.model import load_neo_data, preprocess_data, train_model, evaluate_model, save_feature_importance_plot, predict_danger, model
 
 # Execute code from model.py
 neo_data = load_neo_data()

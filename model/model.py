@@ -18,7 +18,7 @@ model = RandomForestClassifier()
 
 def load_neo_data():
     # Connect to MongoDB
-    client = MongoClient('localhost', 27017)
+    client = MongoClient(f"mongodb+srv://nomi:012no.AhM@nasa.mongocluster.cosmos.azure.com/?tls=true&authMechani sm=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000")
     db = client['nasa']
     collection = db['nasa']
 
