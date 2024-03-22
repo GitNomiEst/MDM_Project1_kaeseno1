@@ -25,6 +25,9 @@ body {
     align-items: center; /* Align items vertically */
 }
 
+.model-explanation {
+    text-align: center;
+}
 
 .weather-title {
     color: white;
