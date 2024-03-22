@@ -45,6 +45,31 @@
         <h2 class="main-title">Model</h2>
         <h2 class="weather-title">Dangerous Asteorids</h2>
 
+        <!-- Explanation of model.py -->
+        <div class="model-explanation">
+            <h3>Explanation of model.py</h3>
+            <p>
+                This Python script, <code>model.py</code>, is responsible for training a machine learning model to
+                classify asteroids based on their features. Let's break down the main functions:
+            <ul>
+                <li><strong>load_neo_data():</strong> Connects to a MongoDB database to fetch Near-Earth Object (NEO)
+                    data.</li>
+                <li><strong>preprocess_data():</strong> Processes the NEO data into a format suitable for training a
+                    machine learning model.</li>
+                <li><strong>train_model():</strong> Trains a Random Forest Classifier model using the preprocessed data.
+                </li>
+                <li><strong>evaluate_model():</strong> Evaluates the trained model's accuracy using testing data.</li>
+                <li><strong>save_feature_importance_plot():</strong> Generates and saves a plot showing the importance
+                    of each feature in predicting asteroid hazard.</li>
+                <li><strong>predict_danger():</strong> Predicts the hazard level of a new asteroid using the trained
+                    model.</li>
+            </ul>
+            Additionally, the script also executes these functions when run directly, loading the data, preprocessing
+            it, training the model, evaluating its accuracy, and saving the feature importance plot.
+            </p>
+        </div>
+
+
         <!-- Feature Importance Plot -->
         <div class="feature-importance-plot">
             <img src="static/feature_importance_plot.png" alt="Feature Importance Plot">

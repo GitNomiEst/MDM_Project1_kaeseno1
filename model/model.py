@@ -86,7 +86,7 @@ def save_feature_importance_plot(model, dataframe, plot_filename):
 
     # Save the plot
     plt.savefig(plot_filename)
-    print("saved figure")
+    print("Saved Feature Importance plot")
 
 
 def predict_danger(model, absolute_magnitude, min_diameter, max_diameter, miss_distance, relative_velocity):
@@ -107,3 +107,4 @@ if __name__ == "__main__":
     accuracy = evaluate_model(model, X_test, y_test)
     print("Accuracy:", accuracy)
     save_feature_importance_plot(model, df, 'frontend/static/feature_importance_plot.png')
+
