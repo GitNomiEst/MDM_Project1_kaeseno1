@@ -20,7 +20,7 @@ try:
     # Create the BlobServiceClient object
     blob_service_client = BlobServiceClient.from_connection_string(args.connection)
 
-    account_url = "https://kaeseno1py.blob.core.windows.net"
+    account_url = "https://kaeseno1.blob.core.windows.net"
     default_credential = DefaultAzureCredential()
     # Create the BlobServiceClient object
     
