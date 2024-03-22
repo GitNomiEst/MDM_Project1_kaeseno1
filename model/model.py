@@ -12,6 +12,7 @@ from sklearn.metrics import accuracy_score
     #print("Data loaded from API")
     #return neo_data
 
+# RandomForestClassifier
 model = RandomForestClassifier()
 
 

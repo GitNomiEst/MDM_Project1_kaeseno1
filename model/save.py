@@ -42,7 +42,7 @@ try:
 
     print("made it to the second middle")
     suffix += 1
-    container_name = str("asteroid" + str(suffix))
+    container_name = str("asteroid-" + str(suffix))
     print("new container name: ")
     print(container_name)
     
@@ -58,7 +58,9 @@ try:
         # Create the container
         container_client = blob_service_client.create_container(container_name)
 
-    local_file_name = "GradientBoostingRegressor.pkl"
+    print("container created")
+    
+    local_file_name = "model.py"
     upload_file_path = os.path.join(".", local_file_name)
 
     # Create a blob client using the local file name as the name for the blob
