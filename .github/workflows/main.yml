@@ -28,4 +28,4 @@ jobs:
         run: python model/model.py
 
       - name: upload model
-        run: python ./save.py -c "${{secrets.AZURE_STORAGE_CONNECTION_STRING}}"
+        run: python model/save.py -c "${{secrets.AZURE_STORAGE_CONNECTION_STRING}}"
