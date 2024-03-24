@@ -68,6 +68,7 @@ def train_model(dataframe):
 def evaluate_model(model, X_test, y_test):
     # Prediction on the test set
     predictions = model.predict(X_test)
+    print(predictions)
 
     # Model evaluation
     accuracy = accuracy_score(y_test, predictions)

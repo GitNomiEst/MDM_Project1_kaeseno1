@@ -35,8 +35,6 @@ def predict():
     # Predict danger level
     danger_level = predict_danger(model, absolute_magnitude, min_diameter, max_diameter, miss_distance, relative_velocity)
 
-    danger_level_str = str(danger_level)
-
     # Return prediction result
     if danger_level:
         prediction_message = "Your asteroid is dangerous!"
