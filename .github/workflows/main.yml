@@ -22,10 +22,10 @@ jobs:
         run: pip install -r requirements.txt
           
       - name: fetch API data and upload to mongodb
-        run: python api.py
+        run: python frontend/api.py
 
       - name: build model
-        run: python model.py
+        run: python model/model.py
 
       - name: upload model
         run: python ./save.py -c "${{secrets.AZURE_STORAGE_CONNECTION_STRING}}"
