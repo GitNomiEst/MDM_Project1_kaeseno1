@@ -68,11 +68,9 @@ def train_model(dataframe):
 def evaluate_model(model, X_test, y_test):
     # Prediction on the test set
     predictions = model.predict(X_test)
-    print(predictions)
 
     # Model evaluation
     accuracy = accuracy_score(y_test, predictions)
-    print("model evaluated")
 
     return accuracy
 
@@ -107,6 +105,6 @@ if __name__ == "__main__":
     df = preprocess_data(neo_data)
     model, X_test, y_test = train_model(df)
     accuracy = evaluate_model(model, X_test, y_test)
-    print("Accuracy:", accuracy)
+    #print("Accuracy:", accuracy)
     save_feature_importance_plot(model, df, 'frontend/static/feature_importance_plot.png')
 

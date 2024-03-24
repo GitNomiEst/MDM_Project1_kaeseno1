@@ -90,6 +90,7 @@
         </form>
         <br>
         <div id="prediction-result"></div> <br>
+        <button id="clear-input" class="btn btn-secondary">Clear Input</button>
 
 
         <div>
@@ -134,6 +135,17 @@
                 predictionResult.innerHTML = `Prediction Result: ${data.result}`;
             })
             .catch(error => console.error('Error:', error));
+    });
+
+     // Clear input fields when the "Clear Input" button is clicked
+     document.getElementById('clear-input').addEventListener('click', function () {
+        // Get all input fields
+        const inputFields = document.querySelectorAll('input[type="text"]');
+        
+        // Iterate over each input field and set its value to an empty string
+        inputFields.forEach(function (input) {
+            input.value = '';
+        });
     });
 </script>
 

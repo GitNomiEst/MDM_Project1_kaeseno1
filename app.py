@@ -37,7 +37,7 @@ def predict():
 
     # Return prediction result
     if danger_level:
-        prediction_message = "Your asteroid is dangerous!"
+        prediction_message = "Your asteroid is potentially hazardous!"
     else:
         prediction_message = "Planet Earth is safe."
 
