@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 azure_connection_string = os.getenv("AZURE_CONNECTION_STRING")
-print(azure_connection_string)
 
 try:
     print("Azure Blob Storage Python quickstart sample")
@@ -20,32 +19,27 @@ try:
     # Create the BlobServiceClient object
     blob_service_client = BlobServiceClient.from_connection_string(azure_connection_string)
 
-    account_url = "https://kaeseno1.blob.core.windows.net"
-    default_credential = DefaultAzureCredential()
+    #account_url = "https://kaeseno1.blob.core.windows.net"
+    #default_credential = DefaultAzureCredential()
     # Create the BlobServiceClient object
     
-    print("made it to the middle")
-    exists = False
-    containers = blob_service_client.list_containers(include_metadata=True)
+    #exists = False
     suffix = 0
-    for container in containers:
-        existingContainerName = container['name']
-        print(existingContainerName, container['metadata'])
-        if existingContainerName.startswith("model"):
-            parts = existingContainerName.split("-")
-            print(parts)
-            if (len(parts) == 3):
-                newSuffix = int(parts[-1])
-                if (newSuffix > suffix):
-                    suffix = newSuffix
+    containers = blob_service_client.list_containers(include_metadata=True)
 
-    print("made it to the second middle")
+    for container in containers:
+        if container.name.startswith("asteroid-"):
+                try:
+                    current_suffix = int(container.name.split("-")[-1])
+                    suffix = max(suffix, current_suffix)
+                except ValueError:
+                    pass  # Ignore if the suffix cannot be converted to int
+
+
     suffix += 1
     container_name = str("asteroid-" + str(suffix))
-    print("new container name: ")
-    print(container_name)
-    
-    print ("made it to the container name")
+    print("new container name: "+container_name)
+
 
     for container in containers:            
         print("\t" + container['name'])
@@ -57,7 +51,7 @@ try:
         # Create the container
         container_client = blob_service_client.create_container(container_name)
 
-    print("container created")
+    print("Container created")
     
     local_file_name = "model.py"
     upload_file_path = os.path.join(".", local_file_name)
@@ -70,7 +64,7 @@ try:
     with open(file=upload_file_path, mode="rb") as data:
         blob_client.upload_blob(data)
 
-    print ("made it to the end")
+    print ("Upload completed")
 
 except Exception as ex:
     print('Exception:')
