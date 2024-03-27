@@ -1,13 +1,12 @@
-# cd model
-# python save.py -c '***AZURE_STORAGE_CONNECTION_STRING***'
-
 import os, uuid
 from azure.identity import DefaultAzureCredential
 from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
 import argparse
+from dotenv import load_dotenv
 
-# https://learn.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-python?tabs=managed-identity%2Croles-azure-portal%2Csign-in-azure-cli
-# Erlaubnis auf eigenes Konto geben :-)
+load_dotenv()
+
+azure_connection_string = os.getenv("AZURE_CONNECTION_STRING")
 
 try:
     print("Azure Blob Storage Python quickstart sample")
@@ -18,13 +17,12 @@ try:
     print ("made it to the beginning")
 
     # Create the BlobServiceClient object
-    blob_service_client = BlobServiceClient.from_connection_string(args.connection)
+    blob_service_client = BlobServiceClient.from_connection_string(azure_connection_string)
 
     account_url = "https://kaeseno1.blob.core.windows.net"
     default_credential = DefaultAzureCredential()
     # Create the BlobServiceClient object
     
-    blob_service_client = BlobServiceClient(account_url, credential=default_credential)
     print("made it to the middle")
     exists = False
     containers = blob_service_client.list_containers(include_metadata=True)
