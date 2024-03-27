@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from pymongo import MongoClient
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score
 
 #COMMENTED OUT AS DATA SHALL BE LOADED FROM MONGO DB TO NOT EXCEED THE NASA API LIMIT
 #def load_neo_data(api_key):
@@ -66,11 +66,20 @@ def train_model(dataframe):
     return model, X_test, y_test
 
 def evaluate_model(model, X_test, y_test):
-    # Prediction on the test set
+    # Nachdem das Modell trainiert wurde
     predictions = model.predict(X_test)
 
     # Model evaluation
     accuracy = accuracy_score(y_test, predictions)
+
+    # Präzision berechnen
+    precision = precision_score(y_test, predictions)
+
+    # Sensitivität (Recall) berechnen
+    recall = recall_score(y_test, predictions)
+
+    print("Precision:", precision)
+    print("Recall:", recall)
 
     return accuracy
 
