@@ -1,4 +1,4 @@
-import os, uuid
+import os
 from azure.identity import DefaultAzureCredential
 from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
 import argparse
@@ -11,19 +11,11 @@ azure_connection_string = os.getenv("AZURE_CONNECTION_STRING")
 try:
     print("Azure Blob Storage Python quickstart sample")
 
-    #parser = argparse.ArgumentParser(description='Upload Model')
-    #parser.add_argument('-c', '--connection', required=True, help="azure storage connection string")
-    #args = parser.parse_args()
-    #print ("made it to the beginning")
-
     # Create the BlobServiceClient object
     blob_service_client = BlobServiceClient.from_connection_string(azure_connection_string)
 
-    #account_url = "https://kaeseno1.blob.core.windows.net"
-    #default_credential = DefaultAzureCredential()
-    # Create the BlobServiceClient object
     
-    #exists = False
+    exists = False
     suffix = 0
     containers = blob_service_client.list_containers(include_metadata=True)
 
@@ -52,9 +44,12 @@ try:
         container_client = blob_service_client.create_container(container_name)
 
     print("Container created")
+
+    print("Current working directory:", os.getcwd())
     
     local_file_name = "model.py"
-    upload_file_path = os.path.join(".", local_file_name)
+    upload_file_path = os.path.join(os.getcwd(), 'model', local_file_name)
+
 
     # Create a blob client using the local file name as the name for the blob
     blob_client = blob_service_client.get_blob_client(container=container_name, blob=local_file_name)
