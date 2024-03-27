@@ -7,14 +7,15 @@ from dotenv import load_dotenv
 load_dotenv()
 
 azure_connection_string = os.getenv("AZURE_CONNECTION_STRING")
+print(azure_connection_string)
 
 try:
     print("Azure Blob Storage Python quickstart sample")
 
-    parser = argparse.ArgumentParser(description='Upload Model')
-    parser.add_argument('-c', '--connection', required=True, help="azure storage connection string")
-    args = parser.parse_args()
-    print ("made it to the beginning")
+    #parser = argparse.ArgumentParser(description='Upload Model')
+    #parser.add_argument('-c', '--connection', required=True, help="azure storage connection string")
+    #args = parser.parse_args()
+    #print ("made it to the beginning")
 
     # Create the BlobServiceClient object
     blob_service_client = BlobServiceClient.from_connection_string(azure_connection_string)
