@@ -17,15 +17,17 @@ jobs:
         with:
           python-version: '3.12.1' # install the python version needed
           cache: 'pip'
-          
+
       - name: install python packages
         run: pip install -r requirements.txt
-          
+      
       - name: fetch API data and upload to mongodb
-        run: python api.py
+        run: python frontend/api.py
 
       - name: build model
-        run: python model.py
+        run: python model/model.py
 
       - name: upload model
-        run: python ./save.py -c "${{secrets.AZURE_STORAGE_CONNECTION_STRING}}"
+        env:
+          AZURE_STORAGE_CONNECTION_STRING: "${{secrets.AZURE_STORAGE_CONNECTION_STRING}}"
+        run: python model/save.py -c "${{secrets.AZURE_STORAGE_CONNECTION_STRING}}"
