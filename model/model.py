@@ -71,11 +71,7 @@ def evaluate_model(model, X_test, y_test):
 
     # Model evaluation
     accuracy = accuracy_score(y_test, predictions)
-
-    # Präzision berechnen
     precision = precision_score(y_test, predictions)
-
-    # Sensitivität (Recall) berechnen
     recall = recall_score(y_test, predictions)
 
     print("Precision:", precision)
